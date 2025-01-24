@@ -1,10 +1,11 @@
+from http import HTTPStatus
+from typing import List, Optional
+
 import pytest
 import requests
-from pydantic import BaseModel, ValidationError, Field
-from typing import List, Optional
+from allure import feature, step, story
 from hamcrest import assert_that, equal_to, greater_than
-from allure import step, feature, title, story
-from http import HTTPStatus
+from pydantic import BaseModel, ValidationError
 
 
 BASE_URL = "https://poetrydb.org"
@@ -45,7 +46,7 @@ class TestPoetryDB:
         with step("Verify that first poem in a list has expected format"):
             poem_data = poem_response.json()[0]
             try:
-                validated_poem = PoemModel(**{
+                PoemModel(**{
                     "title": poem_data["title"],
                     "author": poem_data["author"],
                     "lines": poem_data["lines"],
@@ -80,7 +81,7 @@ class TestPoetryDB:
         with step("Verify that response body correspond to the required format"):
             poem_data = poem_response.json()[0]
             try:
-                validated_poem = PoemModel(**{
+                PoemModel(**{
                     "title": poem_data["title"],
                     "author": poem_data["author"],
                     "lines": poem_data["lines"],
@@ -120,7 +121,7 @@ class TestPoetryDB:
         with step("Validate a poem from the author"):
             sample_poem = author_poems[0]
             try:
-                validated_poem = PoemModel(**{
+                PoemModel(**{
                     "title": sample_poem["title"],
                     "author": sample_poem["author"],
                     "lines": sample_poem["lines"],
