@@ -11,7 +11,7 @@ This document outlines the test cases implemented to verify the functionality of
 | **3. Test retrieving author information** | 1. Get a list of authors. <br> 2. Select a random author. <br> 3. Retrieve author details. <br> 4. Validate author's poems structure
 
 ## Tools and Validation
-Assertions: Used Hamcrest for assertions because it's simple to use and gives clear error messages when something fails. This makes debugging easier.
-Response Code Validation: Every response has its status code validated to ensure it matches the expected outcome (e.g., 200 for success).
-Body Validation: Used Pydantic to validate the response body. It ensures the data matches the expected schema and catches type errors or missing fields. Pydantic is useful because it gives a clear reason if something in the structure is wrong.
+* **Assertions:** Used Hamcrest for assertions because it's simple to use and gives clear error messages when something fails. This makes debugging easier.
+* **Response Code Validation:** Every response has its status code validated to ensure it matches the expected outcome (e.g., 200 for success).
+* **Response Body Validation:** Used Pydantic to validate the response body. It ensures the data matches the expected schema and catches type errors or missing fields. Pydantic is useful because it gives a clear reason if something in the structure is wrong.
 
